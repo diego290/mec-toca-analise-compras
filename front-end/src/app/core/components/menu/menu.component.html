@@ -1,0 +1,41 @@
+<!--<nav class="menu">
+  <ul class="menu-options-list">
+    <li *ngFor="let option of menuOptions" class="menu-option" (click)="openTab(option.url)">
+      {{option.name}}
+    </li>
+  </ul>
+</nav>-->
+
+<div class="wrapper" id="content">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+      <ul class="list-unstyled components">
+          <li>
+              <a [routerLink]="['lotes']">
+                <i-bs 
+                  name="cart-fill" 
+                  width="1.5rem" 
+                  height="1.5rem">
+                </i-bs>
+                  <br>
+                  Lotes 
+                  <br>
+                  Compras
+              </a>
+          </li>
+          <li>
+              <a [routerLink]="['historicocompras']">
+                <i-bs 
+                  name="calendar3" 
+                  width="1.5rem" 
+                  height="1.5rem">
+                </i-bs>
+                <br>
+                  Histórico 
+                <br>
+                  Compras
+              </a>
+          </li>
+      </ul>
+  </nav>
+</div>

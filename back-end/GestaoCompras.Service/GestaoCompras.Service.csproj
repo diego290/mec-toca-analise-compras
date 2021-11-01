@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoCompras.Domain\GestaoCompras.Domain.csproj" />
+    <ProjectReference Include="..\GestaoCompras.Infra.Data\GestaoCompras.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

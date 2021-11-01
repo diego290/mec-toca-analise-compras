@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GestaoCompras.Domain\GestaoCompras.Domain.csproj" />
+    <ProjectReference Include="..\GestaoCompras.Infra.CrossCutting\GestaoCompras.Infra.CrossCutting.csproj" />
+  </ItemGroup>
+
+</Project>

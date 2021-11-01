@@ -1,0 +1,49 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+#content {
+    width: 100%;
+    padding: 10px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.botao {
+    background-color: #3A8ABE; /* Green */
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.botao2 {
+    background-color: #3A8ABE; 
+    color: white; 
+    border: 2px solid #3A8ABE;
+}
+
+.botao2:hover {
+    background-color: white;
+    color: #3A8ABE;
+}

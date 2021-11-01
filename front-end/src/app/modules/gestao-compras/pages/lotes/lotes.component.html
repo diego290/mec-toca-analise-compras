@@ -1,0 +1,27 @@
+<div style="min-height: 100%; transition: all 0.3s; padding-top: 25px; padding-right: 10px;">
+    <br>
+    <select id="status" (change)="onChange($event.target.value)">
+        <option value="GERADOS">GERADOS</option>
+        <option value="FINALIZADOS">FINALIZADOS</option>
+        <option value="TODOS">TODOS</option>
+    </select>
+    <p></p>
+    <table class="table table-striped table-bordered table-hover table-sm">
+        <thead bgcolor="#3A8ABE" style="color: #ffffff;">
+            <tr>
+                <th class="centro" scope="col" sortable="Id" (sort)="onSort($event)">Id Mobne</th>
+                <th class="centro" scope="col" sortable="Descricao" (sort)="onSort($event)">Cenário de Compra</th>
+                <th class="centro" scope="col" sortable="DtaSugestao" (sort)="onSort($event)">Última Sugestão</th>
+                <th class="centro" scope="col" sortable="DtaFinalizacao" (sort)="onSort($event)">Data Finalização</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cc of cenarioCompras" [routerLink]="['/analisecompras', cc.Id]">
+                <td class="direita" style="width: 10%;"> {{cc.ListaCompraConfigId | number}} </td>
+                <td class="esquerda"> {{cc.Descricao}} </td>
+                <td class="centro" style="width: 20%;"> {{cc.DtaSugestao | date:'dd/MM/yyy HH:mm:ss'}} </td>
+                <td class="centro" style="width: 20%;"> {{cc.DtaFinalizacao | date:'dd/MM/yyy HH:mm:ss'}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

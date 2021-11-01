@@ -1,0 +1,76 @@
+.menu {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+   
+  .menu-options-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    color: #ffffff;
+  }
+   
+  .menu-option {
+    padding: 10px 0px 10px 10px;
+  }
+   
+  .menu-option:hover {
+    background-color: #9eccf7;
+    cursor: pointer;
+  }
+
+  /*CSS MENU----------------------------*/
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    background: #3A8ABE;
+    color: #fff;
+    transition: all 0.3s;
+    padding-top: 25px;
+}
+
+#sidebar ul li a {
+    padding-left: 15px;
+    padding-top: 20px;
+    padding-right: 22px;
+    padding-bottom: 10px;
+    font-size: 1.1em;
+    display: block;
+    text-align: center;
+}
+
+#sidebar ul li a:hover {
+    color:  #aac6e4;
+    background: #3A8ABE;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    justify-content: center;
+}
+
+/*FIM CSS MENU-------------------------------------*/

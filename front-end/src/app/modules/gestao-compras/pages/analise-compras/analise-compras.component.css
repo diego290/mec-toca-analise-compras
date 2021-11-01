@@ -1,0 +1,88 @@
+
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.inputTbl {
+    height: 30px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.flex {
+    overflow: hidden;
+    width: 100px !important;
+    display: flex;
+    height: 100%;
+    border: none;
+}
+
+.descProdSel {
+    height: 32px;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+}
+
+#content {
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: rgba(210, 210, 210, 0.6);
+}
+
+#imgLoad {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    /* animation: gira 1s linear infinite; Fazer imagem girar */
+}
+
+@keyframes gira {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.botao {
+    background-color: #3A8ABE; /* Green */
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.botao2 {
+    background-color: #3A8ABE; 
+    color: white; 
+    border: 2px solid #3A8ABE;
+}
+
+.botao2:hover {
+    background-color: white;
+    color: #3A8ABE;
+}

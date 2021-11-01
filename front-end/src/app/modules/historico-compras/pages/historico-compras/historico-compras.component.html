@@ -1,0 +1,83 @@
+<div id="content" style="min-height: 100%; transition: all 0.3s; padding-top: 35px; padding-right: 10px;">
+    <div class="row">
+        <div class="col-12">
+            <fieldset class="border p-2">
+                <legend class="w-auto">Filtros</legend>
+                <div class="row">
+                    <div class="col-2">
+                        <input id="idProduto" type="number" class="form-control" [(ngModel)]="idProduto"
+                            placeholder="Código Produto">
+                    </div>
+                    <div class="col-4">
+                        <input id="descProduto" type="text" class="form-control" [(ngModel)]="produto"
+                            placeholder="Descrição Produto">
+                    </div>
+                    <div class="col-6">
+                        <input id="fornecedor" type="text" class="form-control" [(ngModel)]="fornecedor"
+                            placeholder="Fornecedor">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-2">
+                        <select (change)="onChange($event.target.value)" style="width: 100%; height: 100%;">
+                            <option value="TODOS">TODOS</option>
+                            <option value="COMPRA">COMPRA</option>
+                            <option value="BONIFICAÇÃO">BONIFICAÇÃO</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <input id="dtaIni" class="form-control" type="date" [(ngModel)]="dtaIni"
+                            placeholder="Data Inicial">
+                    </div>
+                    <div class="col-2">
+                        <input id="dtaFim" class="form-control" type="date" [(ngModel)]="dtaFim"
+                            placeholder="Data Final">
+                    </div>
+                    <div class="col-2">
+                        <button class="botao botao2" (click)="pesquisar()">PESQUISAR</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <br>
+    <div class="row" style="overflow: scroll;">
+        <div class="col-12">
+            <table class="table table-striped table-bordered table-hover table-sm">
+                <thead bgcolor="#3A8ABE" style="color: #ffffff;">
+                    <tr>
+                        <th class="centro" scope="col" sortable="Empresa" (sort)="onSort($event)">EMPRESA</th>
+                        <th class="centro" scope="col" sortable="DtaRecebido" (sort)="onSort($event)">RECEBIDO</th>
+                        <th class="centro" scope="col" sortable="Produto" (sort)="onSort($event)">PRODUTO</th>
+                        <th class="centro" scope="col" sortable="NroNF" (sort)="onSort($event)">NF</th>
+                        <th class="centro" scope="col" sortable="Operacao" (sort)="onSort($event)">OPERAÇÃO</th>
+                        <th class="centro" scope="col" sortable="Fornecedor" (sort)="onSort($event)">FORNECEDOR</th>
+                        <th class="centro" scope="col" sortable="Qtd" (sort)="onSort($event)">QTD</th>
+                        <th class="centro" scope="col" sortable="Embalagem" (sort)="onSort($event)">EMB.</th>
+                        <th class="centro" scope="col" sortable="VlrEmbalagem" (sort)="onSort($event)">VLR EMB.</th>
+                        <th class="centro" scope="col" sortable="VlrBruto" (sort)="onSort($event)">VLR BRUTO</th>
+                        <th class="centro" scope="col" sortable="VlrBrutoEmbalagem" (sort)="onSort($event)">VLR BRUTO EMB</th>
+                        <th class="centro" scope="col" sortable="Total" (sort)="onSort($event)">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="centro" *ngFor="let hc of historicoCompras">
+                        <td class="centro" style="text-align: center;"> {{hc.Empresa}} </td>
+                        <td class="centro" style="text-align: center;"> {{hc.DtaRecebido | date:'dd/MM/yyy'}} </td>
+                        <td class="esquerda" style="text-align: left;"> {{hc.Produto}} </td>
+                        <td class="direta" style="text-align: right;"> {{hc.NroNF}} </td>
+                        <td class="centro" style="text-align: center;"> {{hc.Operacao}} </td>
+                        <td class="esquerda" style="text-align: left;"> {{hc.Fornecedor}} </td>
+                        <td class="direta" style="text-align: right;"> {{hc.Qtd}} </td>
+                        <td class="centro" style="text-align: center;"> {{hc.Embalagem}} </td>
+                        <td class="direta" style="text-align: right;"> {{hc.VlrEmbalagem | number:'1.2-2' : 'pt-br'}}</td>
+                        <td class="direta" style="text-align: right;"> {{hc.VlrBruto | number:'1.2-2' : 'pt-br'}} </td>
+                        <td class="direta" style="text-align: right;"> {{hc.VlrBrutoEmbalagem | number:'1.2-2' : 'pt-br'}} </td>
+                        <td class="direta" style="text-align: right;"> {{hc.Total | number:'1.2-2' : 'pt-br'}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

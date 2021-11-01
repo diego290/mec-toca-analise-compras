@@ -1,0 +1,186 @@
+<div style="min-height: 100%; transition: all 0.3s; padding-top: 50px; padding-right: 10px;">
+    <div id="content">
+        <div class="row">
+            <div class="col-3">
+                <input type="text" class="form-control esquerda" ngDefaultControl [(ngModel)]="descricaoCenario" disabled>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control centro" ngDefaultControl [(ngModel)]="dtaSugestao" disabled>
+            </div>
+            <div class="col-5"></div>
+            <div class="col-2">
+                <button class="botao botao2" style="width: 100%;" (click)="verificarQtdCompra(finalizado, alertaQtdCompra)">FINALIZAR LOTE</button>
+            </div>
+        </div>
+        <br>
+        <div class="col-12" style="padding-right: 0px; padding-left: 0px;">
+            <input type="text" class="form-control esquerda descProdSel" ngDefaultControl [(ngModel)]="descProdSel" disabled>
+        </div>
+        <div class="row" style="height: 250px; overflow: scroll;">
+            <div class="col-12" style="padding-right: 0px;">
+                <table class="table table-striped table-bordered table-hover table-sm">
+                    <thead bgcolor="#3A8ABE" style="color: #ffffff;">
+                        <tr>
+                            <th class="centro" scope="col" sortable="Produto.Descricao" (sort)="onSort($event)">PRODUTO</th>
+                            <th class="centro" scope="col" sortable="Embalagem" (sort)="onSort($event)">EMBAL</th>
+                                <th class="centro" scope="col" sortable="MedVendMes" (sort)="onSort($event)">MEDIA VENDA MÊS</th>
+                            <th class="centro" scope="col" sortable="EstoqueDisp" (sort)="onSort($event)">ESTOQUE</th>
+                            <th class="centro" scope="col" sortable="PendReceb" (sort)="onSort($event)">PEND RECEB</th>
+                            <th class="centro" scope="col" sortable="PendExped" (sort)="onSort($event)">PEND EXPED</th>
+                            <th class="centro" scope="col" sortable="DiasEstoque" (sort)="onSort($event)">DIAS ESTOQ</th>
+                            <th class="centro" scope="col" sortable="CustoMedio" (sort)="onSort($event)">CUSTO MÉDIO</th>
+                            <th class="centro" scope="col" sortable="QtdUltCompra" (sort)="onSort($event)">QTD ULT COMPRA</th>
+                            <th class="centro" scope="col" sortable="CustoUltCompra" (sort)="onSort($event)">CUSTO ULT COMPRA</th>
+                            <th class="centro" scope="col" bgcolor="#f3f3f3"> </th>
+                            <th class="centro" scope="col" sortable="QtdCompra" (sort)="onSort($event)">QTD COMPRA</th>
+                            <th class="centro" scope="col" sortable="VlrEmbalagem" (sort)="onSort($event)">VLR EMBAL</th>
+                            <th class="centro" scope="col" sortable="VlrDesc" (sort)="onSort($event)">VLR DESC</th>
+                            <th class="centro" scope="col" sortable="VlrAcrec" (sort)="onSort($event)">VLR ACRES</th>
+                            <th class="centro" scope="col" sortable="VlrTotal" (sort)="onSort($event)">VLR TOTAL</th>
+                            <th class="centro" scope="col" sortable="Fornecedores" (sort)="onSort($event)">FORNECEDOR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr [className]="idProdSel == cv.Produto.Id ? 'selecionado' : 'nenhum'" *ngFor="let cv of cenarioProdutos" (click)="setProdSel(cv)">
+                            <td class="esquerda flex"> {{cv.Produto.Descricao}} </td>
+                            <td class="centro" > {{cv.Embalagem}} </td>
+                            <td class="direita"> {{cv.MedVendMes | number:'1.2-2' : 'pt-br'}} </td>
+                            <td class="direita"> {{cv.EstoqueDisp}} </td>
+                            <td class="direita"> {{cv.PendReceb}} </td>
+                            <td class="direita"> {{cv.PendExped}} </td>
+                            <td class="direita"> {{cv.DiasEstoque}} </td>
+                            <td class="direita"> {{cv.CustoMedio | number:'1.2-2' : 'pt-br'}} </td>
+                            <td class="direita"> {{cv.QtdUltCompra}} </td>
+                            <td class="direita"> {{cv.CustoUltCompra | number:'1.2-2' : 'pt-br'}} </td>
+                            <td bgcolor="#f3f3f3"> {{""}} </td>
+                            <td>
+                                <input type="number" (focus)="setProdSel(cv)" class="form-control direita inputTbl" ngDefaultControl [(ngModel)]="cv.QtdCompra">
+                            </td>
+                            <td>
+                                <input type="number" (focus)="setProdSel(cv)" class="form-control direita inputTbl" ngDefaultControl [(ngModel)]="cv.VlrEmbalagem">
+                            </td>
+                            <td>
+                                <input type="number" (focus)="setProdSel(cv)" class="form-control direita inputTbl" ngDefaultControl [(ngModel)]="cv.VlrDesc">
+                            </td>
+                            <td>
+                                <input type="number" (focus)="setProdSel(cv)" class="form-control direita inputTbl" ngDefaultControl [(ngModel)]="cv.VlrAcrec">
+                            </td>
+                            <td class="direita" [(ngModel)]="cv.VlrTotal" ngDefaultControl> {{cv.QtdCompra * cv.VlrEmbalagem - cv.VlrDesc + cv.VlrAcrec | number:'1.2-2' : 'pt-br'}} </td>
+                            <td>
+                                <select id="cv.Produto.Id">
+                                    <option value="forn.Id" *ngFor="let forn of cv.Fornecedores"> {{forn.NomeRazao}}</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-2">
+                <h4 style="color: #3A8ABE;"><b>HISTÓRICO</b></h4>
+            </div>
+            <div class="col-7">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-4">
+                        <select id="periodo" (change)="onChange($event.target.value)" style="vertical-align: middle; height: 100%; width: 100%;">
+                            <option value="3">3 Meses</option>
+                            <option value="6">6 Meses</option>
+                            <option value="12">1 Ano</option>
+                            <option value="24">2 Anos</option>
+                            <option value="36">3 Anos</option>
+                            <option value="48">4 Anos</option>
+                            <option value="60">5 Anos</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <!-- <button class="btn btn-primary" [routerLink]="['/historicocompras', { idProdSel: idProdSel, descProdSel: descProdSel, periodoSel: periodoSel }]">COMPRAS</button> -->
+                        <button class="botao botao2" (click)="abrirCompras(compras)">COMPRAS</button>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 10px;">
+                    <div class="col-12">
+                        <table class="table table-striped table-bordered table-hover table-sm">
+                            <thead bgcolor="#3A8ABE" style="color: #ffffff;">
+                                <tr>
+                                    <th class="centro" scope="col" sortable="Mes" (sort)="onSort($event)">MÊS</th>
+                                    <th class="centro" scope="col" sortable="QtdCompra" (sort)="onSort($event)">QTD COMPRA</th>
+                                    <th class="centro" scope="col" sortable="QtdVenda" (sort)="onSort($event)">QTD VENDA</th>
+                                    <th class="centro" scope="col" sortable="VlrCompra" (sort)="onSort($event)">VLR COMPRA</th>
+                                    <th class="centro" scope="col" sortable="VlrVenda" (sort)="onSort($event)">VLR VENDA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="centro" *ngFor="let cv of comprasVendas">
+                                    <td class="esquerda"> {{cv.MesAno}} </td>
+                                    <td class="direita"> {{cv.QtdCompra}} </td>
+                                    <td class="direita"> {{cv.QtdVenda}} </td>
+                                    <td class="direita"> {{cv.VlrCompra | number:'1.2-2' : 'pt-br'}} </td>
+                                    <td class="direita"> {{cv.VlrVenda  | number:'1.2-2' : 'pt-br'}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <canvas #meuCanvas></canvas>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #finalizado let-c="close" let-d="dismiss">
+        <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Finalizar Lote</h4>
+        <button type="button" class="close" aria-label="Close" [routerLink]="['/lotes']" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <p>{{descricaoModal}}</p>
+        </div>
+    </ng-template>
+    
+    <ng-template #alertaQtdCompra let-c="close" let-d="dismiss">
+        <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Finalizar Lote</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <p>Existem produtos com quantidade de compra zerados. Se continuar eles serão ignorados na finalização do lote. <br>
+            Deseja continuar? 
+        </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger" (click)="d('Cross click')">Cancelar</button>
+            <button class="btn btn-primary" (click)="finalizarLote(finalizado)">Continuar</button>
+        </div>
+    </ng-template>
+
+    <ng-template #compras let-c="close" let-d="dismiss">
+        <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Histórico de Compras</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body" style="height: 500px; overflow: scroll;">
+        <app-historico-compras></app-historico-compras>
+        </div>
+    </ng-template>
+    
+    
+    <div id="loader" *ngIf="load"> 
+        <div id="imgLoad" class="centralizado">
+            <img src="../../../../../assets/load.gif" width="80" height="80">
+        </div>
+    </div>
+
+</div>

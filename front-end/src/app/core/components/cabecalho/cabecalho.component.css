@@ -1,0 +1,17 @@
+#cabecalho{
+    background-color: white;
+    align-content: center;
+    justify-content: center;
+    min-height: 55px;
+    height: 47px;
+}
+
+.sombra{
+    -webkit-box-shadow: 0px 4px 20px 0px rgba(194,194,194,1);
+    -moz-box-shadow: 0px 4px 20px 0px rgba(194,194,194,1);
+    box-shadow: 0px 4px 20px 0px rgba(194,194,194,1);
+}
+
+a{
+    padding-top: 5px;
+}
